@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+    name="prb.arsene50"
+    interface="prb.arsene50.interfaces.IPrbArsene50Layer"
+  />
+</layers>

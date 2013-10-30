@@ -1,0 +1,16 @@
+#: prb.arsene50:/browser/arsene50_view.py:27
+msgid "Can't call url from www.arsene50.be"
+msgstr ""
+
+#: prb.arsene50:/browser/arsene50_view.py:32
+msgid "Json value error from ww.arsene50.be"
+msgstr ""
+
+#: prb.arsene50:/browser/arsene50_view.py:35
+msgid "Json bad formatted from ww.arsene50.be"
+msgstr ""
+
+#. Default: "A l'affiche"
+#: prb.arsene50:/browser/templates/arsene50_view.pt:14
+msgid "arsene50_affiche_title"
+msgstr ""

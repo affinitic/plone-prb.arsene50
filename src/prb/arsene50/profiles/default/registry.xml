@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<registry>
+
+    <record name="prb.arsene50.currentoffer">
+        <field type="plone.registry.field.TextLine">
+            <title>CurrentOffer</title>
+            <description>Url of webservice from arsene50</description>
+        </field>
+        <value>http://api.arsene50.be/currentOffer</value>
+    </record>
+
+    <record name="prb.arsene50.nextoffer">
+        <field type="plone.registry.field.TextLine">
+            <title>NextOffer</title>
+            <description>Url of webservice from arsene50</description>
+        </field>
+        <value>http://api.arsene50.be/nextOffer</value>
+    </record>
+
+</registry>

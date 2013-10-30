@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="prb.arsene50">
+<body>
+<div metal:fill-slot="content-core">
+
+
+    <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>
+
+    <h2 i18n:translate="arsene50_affiche_title">A l'affiche</h2>
+    <div class="arsene50-affiche">
+        <tal:block tal:repeat="event view/get_events">
+        <div tal:content="event/name"></div>
+        <div tal:content="event/longdesc"></div>
+
+        </tal:block>
+    </div>
+
+    <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>
+
+    <div tal:content="structure context/getText"></div>
+</div>
+</body>
+</html>

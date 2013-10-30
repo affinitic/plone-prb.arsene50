@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="prb.arsene50">
+
+
+  <include file="configure.zcml" />
+  <!-- Register the installation GenericSetup extension profile -->
+  <genericsetup:registerProfile
+      name="testing"
+      title="prb.arsene50 test"
+      directory="profiles/testing"
+      description="prb.arsene50 desc"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <genericsetup:importStep
+      name="prb.arsene50.tests_content"
+      title="prb.arsene50 test"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler=".setuphandlers.testSetup">
+  </genericsetup:importStep>
+
+</configure>

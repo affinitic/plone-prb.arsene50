@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="prb.arsene50">
+
+    <!-- Publish static files -->
+    <browser:resourceDirectory
+      name="prb.arsene50"
+      directory="static"
+  />
+
+  <include package="plone.app.contentmenu" />
+
+    <browser:page
+      for="*"
+      name="arsene50_view"
+      menu="plone_displayviews"
+      title="Arsene50 view"
+      class=".arsene50_view.Arsene50View"
+      template="templates/arsene50_view.pt"
+      layer="..interfaces.IPrbArsene50Layer"
+      permission="zope2.View"
+      />
+
+</configure>
