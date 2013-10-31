@@ -16,7 +16,12 @@
         <tal:block tal:repeat="event view/get_events">
         <div tal:content="event/name"></div>
         <div tal:content="event/longdesc"></div>
-
+        <div tal:content="event/place_name"></div>
+        <div tal:content="event/place_address"></div>
+        <div tal:content="event/sale_all_day"></div>
+        <div tal:content="event/spectacle_id"></div>
+        <div tal:content="event/categories"></div>
+        <br /><br />
         </tal:block>
     </div>
 

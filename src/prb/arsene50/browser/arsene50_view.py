@@ -60,14 +60,67 @@ class EventArsene(dict):
     def get_content(self, key):
         return self.get("{}_{}".format(key, self.context_lang.lower()))
 
-    def get_place(self):
+    def place(self):
         return self.get('Place')
 
-    def get_sale_all_day(self):
+    @property
+    def place_name(self):
+        return self.place().get('name_{}'.format(self.context_lang))
+
+    @property
+    def place_address(self):
+        place = self.place()
+        addr = "{} {} {}".format(
+                place.get('street_{}'.format(self.context_lang)),
+                place.get('zip'),
+                place.get('city_{}'.format(self.context_lang))
+                )
+        return addr
+
+    @property
+    def sale_all_day(self):
         return self.get('sale_all_day')
 
-    def get_spectacle_id(self):
+    @property
+    def spectacle_id(self):
         return self.get('spectacle_id')
 
-    def get_categories(self):
+    def categories(self):
         return self.get("categories")
+
+    @property
+    def normal_price(self):
+        cat = self.get("categories")
+        return cat.get('normal_price')
+
+    @property
+    def arsene_price(self):
+        cat = self.get("categories")
+        return cat.get('arsene_price')
+
+    @property
+    def hour(self):
+        cat = self.get("categories")
+        return cat.get('hour')
+
+    @property
+    def date(self):
+        cat = self.get("categories")
+        date = cat.get('date').split('-')
+        format_date = "{}/{}/{}".format(date[2], date[1], date[0])
+        return format_date
+
+    @property
+    def available_seats(self):
+        cat = self.get("categories")
+        return cat.get('available_seats')
+
+    @property
+    def seat_category(self):
+        cat = self.get("categories")
+        return cat.get('seat_category')
+
+    @property
+    def remark(self):
+        cat = self.get("categories")
+        return cat.get('remark_{}'.format(self.context_lang))
