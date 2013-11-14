@@ -17,10 +17,11 @@
         <div tal:content="event/name"></div>
         <div tal:content="event/longdesc"></div>
         <div tal:content="event/place_name"></div>
-        <div tal:content="event/place_address"></div>
+        <div tal:content="structure event/place_address"></div>
         <div tal:content="event/sale_all_day"></div>
         <div tal:content="event/spectacle_id"></div>
         <div tal:content="event/categories"></div>
+        <div tal:content="event"></div>
         <br /><br />
         </tal:block>
     </div>

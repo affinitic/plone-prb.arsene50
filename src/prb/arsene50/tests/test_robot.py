@@ -9,8 +9,8 @@ from prb.arsene50.testing import PRB_ARSENE50_ROBOT_TESTING
 def test_suite():
     suite = unittest.TestSuite()
     robots_file = [
-                'example.robot',
-            ]
+        'example.robot',
+    ]
 
     for robot_file in robots_file:
         rts = robotsuite.RobotTestSuite(robot_file)

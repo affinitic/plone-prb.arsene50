@@ -7,6 +7,7 @@ from Products.CMFCore.utils import getToolByName
 
 from prb.arsene50.testing import PRB_ARSENE50_INTEGRATION
 
+
 class TestIntegration(unittest.TestCase):
     layer = PRB_ARSENE50_INTEGRATION
 
@@ -24,4 +25,4 @@ class TestIntegration(unittest.TestCase):
         pid = 'prb.arsene50'
         installed = [p['id'] for p in qi_tool.listInstalledProducts()]
         self.assertTrue(pid in installed,
-                    'package appears not to have been installed')
+                        'package appears not to have been installed')

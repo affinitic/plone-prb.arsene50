@@ -17,10 +17,11 @@ def testSetup(context):
 
 def add_doc(portal, lang):
     doc = api.content.create(
-            container=portal,
-            type="Document",
-            title="Arsene50",
-            language=lang)
+        container=portal,
+        type="Document",
+        title="Arsene50",
+        language=lang
+    )
     doc.setLayout('arsene50_view')
     api.content.transition(obj=doc, transition='publish')
     return doc

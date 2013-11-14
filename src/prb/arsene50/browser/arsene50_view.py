@@ -70,12 +70,27 @@ class EventArsene(dict):
     @property
     def place_address(self):
         place = self.place()
-        addr = "{} {} {}".format(
-                place.get('street_{}'.format(self.context_lang)),
-                place.get('zip'),
-                place.get('city_{}'.format(self.context_lang))
-                )
+        street = place.get('street_{}'.format(self.context_lang))
+        nr = place.get('house_nr')
+        zipcode = place.get('zip')
+        city = place.get('city_{}'.format(self.context_lang))
+        addr = u"{}, {} <br />{} {}".format(street, nr, zipcode, city)
         return addr
+
+    @property
+    def place_mail(self):
+        place = self.place()
+        return place.get('email_'.format(self.context_lang))
+
+    @property
+    def place_tel(self):
+        place = self.place()
+        return place.get('tel')
+
+    @property
+    def place_website(self):
+        place = self.place()
+        return place.get('website_'.format(self.context_lang))
 
     @property
     def sale_all_day(self):
@@ -107,7 +122,7 @@ class EventArsene(dict):
     def date(self):
         cat = self.get("categories")
         date = cat.get('date').split('-')
-        format_date = "{}/{}/{}".format(date[2], date[1], date[0])
+        format_date = u"{}/{}/{}".format(date[2], date[1], date[0])
         return format_date
 
     @property
