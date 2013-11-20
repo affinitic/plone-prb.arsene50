@@ -11,19 +11,51 @@
 
     <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>
 
-    <h2 i18n:translate="arsene50_affiche_title">A l'affiche</h2>
-    <div class="arsene50-affiche">
-        <tal:block tal:repeat="event view/get_events">
-        <div tal:content="event/name"></div>
-        <div tal:content="event/longdesc"></div>
-        <div tal:content="event/place_name"></div>
-        <div tal:content="structure event/place_address"></div>
-        <div tal:content="event/sale_all_day"></div>
-        <div tal:content="event/spectacle_id"></div>
-        <div tal:content="event/categories"></div>
-        <div tal:content="event"></div>
-        <br /><br />
-        </tal:block>
+    <h2> 
+        <tal:block i18n:translate="arsene50_affiche_title">A l'affiche </tal:block>
+        <tal:block i18n:translate="today">Aujourd'hui</tal:block>
+        (<tal:block tal:content="view/get_today">26/07/1984</tal:block>)
+
+    </h2>
+    <div tal:define="events view/get_events" id="accordion">
+    <tal:block tal:repeat="key python:events.keys()" >
+    <tal:block tal:define="randevent python:events[key][0]">
+    <h3>
+        <tal:block tal:content="key"/>
+        <span tal:content="structure randevent/place_address"></span>
+        <span tal:content="randevent/place_tel"></span>
+        <a href="" tal:attributes="href string:mailto:${randevent/place_mail}" tal:content="randevent/place_mail"></a>
+    </h3>   
+    <div>
+    <ul class="arsene50-affiche" >
+        <li tal:repeat="event python:events[key]">
+        <div class="title" tal:content="event/name" tal:attributes='rel string:#moreinfo${repeat/key/number}_${repeat/event/number}'></div>
+            <div>
+                <span i18n:translate="Place:">Lieu :</span>    
+                <a href="" tal:attributes="href event/place_website">
+                    <tal:block tal:content="event/place_name"></tal:block>
+                </a>
+                <span i18n:translate="a">&agrave;</span>
+                <span tal:content="event/hour"></span>
+            </div>
+            <div>
+                <span class="normalprice" tal:content="structure event/normal_price"></span>
+                <span class="arseneprice" tal:content="structure event/arsene_price"></span>
+                <span i18:translte="available_seats">Place restante :</span>
+                <span tal:content="event/available_seats"></span>
+            </div>
+            <div class="moreinfo" tal:attributes='id string:moreinfo${repeat/key/number}_${repeat/event/number}'>
+                <div tal:content="structure event/longdesc"></div>
+
+            </div>
+            <!--div tal:content="event/sale_all_day"></div-->
+            <!--div tal:content="event/spectacle_id"></div-->
+            <br />
+        </li>
+    </ul>
+    </div>
+    </tal:block>
+    </tal:block>
     </div>
 
     <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>
