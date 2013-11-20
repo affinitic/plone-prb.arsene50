@@ -4,20 +4,42 @@ from plone import api
 import json
 import urllib2
 from prb.arsene50 import _
+from datetime import date
 
 
 class Arsene50View(BrowserView):
 
+    def get_today(self):
+        today = date.today()
+        return "{}/{}/{}".format(
+                today.day,
+                today.month,
+                today.year,
+                )
+
     def get_events(self):
         lang = self.context.Language()
+        if lang == "en":
+            lang = "fr"
         events = []
-        url_co = api.portal.get_registry_record('prb.arsene50.currentoffer')
-        url_no = api.portal.get_registry_record('prb.arsene50.nextoffer')
-        jdict_co = get_json_from_url(url_co)
-        jdict_no = get_json_from_url(url_no)
-        events += [transform_jdict(jdict, lang) for jdict in jdict_co]
-        events += [transform_jdict(jdict, lang) for jdict in jdict_no]
-        return events
+        url_current = api.portal.get_registry_record(
+                'prb.arsene50.currentoffer')
+        jdict_current = get_json_from_url(url_current)
+        events += [transform_jdict(jdict, lang) for jdict in jdict_current]
+        #url_next = api.portal.get_registry_record('prb.arsene50.nextoffer')
+        #jdict_next = get_json_from_url(url_next)
+        #events += [transform_jdict(jdict, lang) for jdict in jdict_next]
+        name = 'name_{}'.format(lang)
+        sort_by_place_events = sorted(events,
+                key=lambda k: k['Place'][name])
+        # group_list = group_list_by_place(sort_by_place_events, name)
+        return sort_by_place_events
+
+
+def group_list_by_place(events, key_place_name):
+    names = set(map(lambda x: x['Place'][key_place_name], events))
+    grouplists = [[y for y in events if y['Place'][key_place_name] == x] for x in names]
+    return dict(zip(names, grouplists))
 
 
 def get_json_from_url(url):
@@ -29,10 +51,10 @@ def get_json_from_url(url):
     try:
         jdict = json.load(data)
     except ValueError, e:
-        error = _(u'Json value error from ww.arsene50.be')
+        error = _(u'Json value error from www.arsene50.be')
         return error
     except SyntaxError, e:
-        error = _(u'Json bad formatted from ww.arsene50.be')
+        error = _(u'Json bad formatted from www.arsene50.be')
         return error
     return jdict
 
@@ -80,7 +102,7 @@ class EventArsene(dict):
     @property
     def place_mail(self):
         place = self.place()
-        return place.get('email_'.format(self.context_lang))
+        return place.get('email_{}'.format(self.context_lang))
 
     @property
     def place_tel(self):
@@ -101,41 +123,46 @@ class EventArsene(dict):
         return self.get('spectacle_id')
 
     def categories(self):
-        return self.get("categories")
+        cat = self.get("categories")
+        if isinstance(cat, list):
+            cat = cat[0]
+        return cat
 
     @property
     def normal_price(self):
-        cat = self.get("categories")
-        return cat.get('normal_price')
+        cat = self.categories()
+        return "{0:.2f}&euro;".format(
+                cat.get('normal_price')).replace('.', ',')
 
     @property
     def arsene_price(self):
-        cat = self.get("categories")
-        return cat.get('arsene_price')
+        cat = self.categories()
+        return "{0:.2f}&euro;".format(
+                cat.get('arsene_price')).replace('.', ',')
 
     @property
     def hour(self):
-        cat = self.get("categories")
+        cat = self.categories()
         return cat.get('hour')
 
     @property
     def date(self):
-        cat = self.get("categories")
+        cat = self.categories()
         date = cat.get('date').split('-')
         format_date = u"{}/{}/{}".format(date[2], date[1], date[0])
         return format_date
 
     @property
     def available_seats(self):
-        cat = self.get("categories")
+        cat = self.categories()
         return cat.get('available_seats')
 
     @property
     def seat_category(self):
-        cat = self.get("categories")
+        cat = self.categories()
         return cat.get('seat_category')
 
     @property
     def remark(self):
-        cat = self.get("categories")
+        cat = self.categories()
         return cat.get('remark_{}'.format(self.context_lang))
