@@ -23,5 +23,5 @@ def add_doc(portal, lang):
         language=lang
     )
     doc.setLayout('arsene50_view')
-    api.content.transition(obj=doc, transition='publish')
+    #api.content.transition(obj=doc, transition='publish')
     return doc
