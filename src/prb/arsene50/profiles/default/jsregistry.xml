@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts">
+ <javascript
+     id="++resource++prb.arsene50/arsene50.js"
+     authenticated="False"
+     cacheable="True" compression="safe" cookable="True"
+     enabled="True" expression=""
+     inline="False"
+     />
+</object>
