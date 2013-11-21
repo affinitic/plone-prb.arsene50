@@ -1,16 +1,41 @@
-#: prb.arsene50:/browser/arsene50_view.py:27
+#: prb.arsene50:/browser/arsene50_view.py:59
 msgid "Can't call url from www.arsene50.be"
 msgstr ""
 
-#: prb.arsene50:/browser/arsene50_view.py:32
-msgid "Json value error from ww.arsene50.be"
+#: prb.arsene50:/browser/arsene50_view.py:64
+msgid "Json value error from www.arsene50.be"
 msgstr ""
 
-#: prb.arsene50:/browser/arsene50_view.py:35
-msgid "Json bad formatted from ww.arsene50.be"
+#: prb.arsene50:/browser/arsene50_view.py:67
+msgid "Json bad formatted from www.arsene50.be"
 msgstr ""
 
 #. Default: "A l'affiche"
-#: prb.arsene50:/browser/templates/arsene50_view.pt:14
+#: prb.arsene50:/browser/templates/arsene50_view.pt:15
 msgid "arsene50_affiche_title"
+msgstr ""
+
+#. Default: "aujourd'hui"
+#: prb.arsene50:/browser/templates/arsene50_view.pt:16
+msgid "today"
+msgstr ""
+
+#. Default: "Quand ?"
+#: prb.arsene50:/browser/templates/arsene50_view.pt:34
+msgid "When?"
+msgstr ""
+
+#. Default: "&agrave;"
+#: prb.arsene50:/browser/templates/arsene50_view.pt:35
+msgid "a"
+msgstr ""
+
+#. Default: "Combien ?"
+#: prb.arsene50:/browser/templates/arsene50_view.pt:39
+msgid "How much?"
+msgstr ""
+
+#. Default: "En savoir plus"
+#: prb.arsene50:/browser/templates/arsene50_view.pt:46
+msgid "moreinfo"
 msgstr ""

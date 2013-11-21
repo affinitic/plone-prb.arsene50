@@ -43,7 +43,7 @@ i18n:domain="prb.arsene50">
                 <span i18:translte="available_seats">Place(s) restante(s) :</span>
                 <span tal:content="event/available_seats"></span>
             </div>
-            <a href="#" class="show_hide" tal:attributes="rel string:#moreinfo_${repeat/place/number}_${repeat/event/number}">Show/hide</a>
+            <a href="#" class="show_hide" tal:attributes="rel string:#moreinfo_${repeat/place/number}_${repeat/event/number}" i18n:translate="moreinfo">En savoir plus</a>
             <div class="moreinfo" tal:attributes="id string:moreinfo_${repeat/place/number}_${repeat/event/number}">
                 <div tal:content="structure event/longdesc"></div>
             </div>
