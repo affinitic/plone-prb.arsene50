@@ -1,9 +1,10 @@
 $(document).ready(function() {
-     $("div.title[rel]").overlay();
-     $( "#accordion" ).accordion({
-         heightStyle: "content",
-         collapsible: true,
-         disable: true,
-     });
+    $(".moreinfo").hide();
+    $(".show_hide").show();
 
- });
+    $('a.show_hide').click(function(event){
+        rel = event.currentTarget.rel;
+        $(rel).slideToggle();
+        event.preventDefault();
+    });
+});

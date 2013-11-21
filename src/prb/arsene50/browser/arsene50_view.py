@@ -32,14 +32,24 @@ class Arsene50View(BrowserView):
         name = 'name_{}'.format(lang)
         sort_by_place_events = sorted(events,
                 key=lambda k: k['Place'][name])
-        # group_list = group_list_by_place(sort_by_place_events, name)
-        return sort_by_place_events
+        places = find_places(sort_by_place_events)
+        group_list = group_list_by_place(sort_by_place_events)
+        return {'places': places, 'list': group_list}
 
 
-def group_list_by_place(events, key_place_name):
-    names = set(map(lambda x: x['Place'][key_place_name], events))
-    grouplists = [[y for y in events if y['Place'][key_place_name] == x] for x in names]
+def group_list_by_place(events):
+    names = set(map(lambda x: x.place_name, events))
+    grouplists = [[y for y in events if y.place_name == x] for x in names]
     return dict(zip(names, grouplists))
+
+
+def find_places(events):
+    places = map(lambda x: {'name': x.place_name,
+                            'address': x.place_address,
+                            'tel': x.place_tel,
+                            'mail': x.place_mail,
+                            'website': x.place_website}, events)
+    return [dict(t) for t in set([tuple(place.items()) for place in places])]
 
 
 def get_json_from_url(url):
