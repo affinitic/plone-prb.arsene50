@@ -37,7 +37,6 @@ setup(
         'setuptools',
         'plone.api',
         'Products.LinguaPlone',
-        'collective.js.datatables',
     ],
     extras_require={
         'test': [
