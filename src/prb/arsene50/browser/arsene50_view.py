@@ -5,6 +5,8 @@ import json
 import urllib2
 from prb.arsene50 import _
 from datetime import date
+import logging
+log = logging.getLogger("prb.arsene50")
 
 
 class Arsene50View(BrowserView):
@@ -53,6 +55,7 @@ def find_places(events):
 
 
 def get_json_from_url(url):
+    log.info('Take data from {}'.format(url))
     try:
         data = urllib2.urlopen(url)
     except urllib2.URLError, e:
@@ -122,7 +125,7 @@ class EventArsene(dict):
     @property
     def place_website(self):
         place = self.place()
-        return place.get('website_'.format(self.context_lang))
+        return place.get('website_{}'.format(self.context_lang))
 
     @property
     def sale_all_day(self):

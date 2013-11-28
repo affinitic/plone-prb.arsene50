@@ -24,24 +24,24 @@ i18n:domain="prb.arsene50">
         <div class="place_info">
             <div class="place_address" tal:content="structure place/address"></div>
             <div class="place_tel" tal:content="place/tel"></div>
-            <a href="" tal:attributes="href string:mailto:${place/mail}" tal:content="place/mail"></a>
-            <a href="" tal:attributes="href place/website" tal:content='place/website'></a>
+            <div class="place_mailto" ><a href="" tal:attributes="href string:mailto:${place/mail}" tal:content="place/mail"></a></div>
+            <div class="place_website"><a href="" tal:attributes="href place/website" tal:content='python: place["website"].replace("http://", "")' target="_blank"></a></div>
         </div>
         <ul>     
-            <li tal:repeat="event python:events[place['name']]"> 
+            <li tal:repeat="event python:events[place['name']]" class="arsene50_events"> 
             <div tal:attributes='id string:moreinfo${repeat/event/number}'>
                 <h4 tal:content="event/name"></h4>
-                <span i18n:translate="When?">Quand ?</span>
+                <span class="event_question" i18n:translate="When?">Quand ?</span>
                 <span i18n:translate="a">&agrave;</span>
-                <span tal:content="event/hour"></span>
+                <span class="event_hour" tal:content="event/hour"></span>
             </div>
             <div>
-                <span i18n:translate="How much?">Combien ?</span>
+                <span class="event_question" i18n:translate="How much?">Combien ?</span>
                 <span class="normalprice" tal:content="structure event/normal_price"></span>
                 <span class="arseneprice" tal:content="structure event/arsene_price"></span>
                 <br />
-                <span i18:translte="available_seats">Place(s) restante(s) :</span>
-                <span tal:content="event/available_seats"></span>
+                <span class="event_question" i18:translte="available_seats">Place(s) restante(s) :</span>
+                <span class="event_available_seats" tal:content="event/available_seats"></span>
             </div>
             <a href="#" class="show_hide" tal:attributes="rel string:#moreinfo_${repeat/place/number}_${repeat/event/number}" i18n:translate="moreinfo">En savoir plus</a>
             <div class="moreinfo" tal:attributes="id string:moreinfo_${repeat/place/number}_${repeat/event/number}">
