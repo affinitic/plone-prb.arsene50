@@ -7,53 +7,59 @@ metal:use-macro="here/main_template/macros/master"
 i18n:domain="prb.arsene50">
 <body>
 <div metal:fill-slot="content-core">
-
+<script type="text/javascript">$(".collapse").collapse()</script>
 
     <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>
 
-    <h2> 
+    <h2 class="h2soustitre"> 
         <tal:block i18n:translate="arsene50_affiche_title">A l'affiche </tal:block>
         <tal:block i18n:translate="today">aujourd'hui</tal:block>
         (<tal:block tal:content="view/get_today">26/07/1984</tal:block>)
     </h2>
 
-    <ul class="places" tal:define="places python:view.get_events()['places'];
-                                   events python:view.get_events()['list']">
-        <li class="place" tal:repeat="place places">
-        <h3 tal:content="place/name"></h3>
+<ul id="accordion2" class="accordion places" tal:define="places python:view.get_events()['places'];
+                                                         events python:view.get_events()['list']">
+  <li class="accordion-group place" tal:repeat="place places">
+    <div class="accordion-heading">
+      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" tal:define="myTarget python:repeat['place'].index" tal:attributes="href string:#${myTarget}"><h3 class="h3soussoustitre" tal:content="place/name"></h3></a>
+    </div>
+    <div class="accordion-body collapse" tal:attributes="id python:repeat['place'].index">
+      <div class="accordion-inner">
         <div class="place_info">
             <div class="place_address" tal:content="structure place/address"></div>
             <div class="place_tel" tal:content="place/tel"></div>
             <div class="place_mailto" ><a href="" tal:attributes="href string:mailto:${place/mail}" tal:content="place/mail"></a></div>
             <div class="place_website"><a href="" tal:attributes="href place/website" tal:content='python: place["website"].replace("http://", "")' target="_blank"></a></div>
         </div>
-        <ul>     
-            <li tal:repeat="event python:events[place['name']]" class="arsene50_events"> 
-            <div tal:attributes='id string:moreinfo${repeat/event/number}'>
-                <h4 tal:content="event/name"></h4>
-                <span class="event_question" i18n:translate="When?">Quand ?</span>
-                <span i18n:translate="a">&agrave;</span>
-                <span class="event_hour" tal:content="event/hour"></span>
-            </div>
-            <div>
-                <span class="event_question" i18n:translate="How much?">Combien ?</span>
-                <span class="normalprice" tal:content="structure event/normal_price"></span>
-                <span class="arseneprice" tal:content="structure event/arsene_price"></span>
-                <br />
-                <span class="event_question" i18:translte="available_seats">Place(s) restante(s) :</span>
-                <span class="event_available_seats" tal:content="event/available_seats"></span>
-            </div>
-            <a href="#" class="show_hide" tal:attributes="rel string:#moreinfo_${repeat/place/number}_${repeat/event/number}" i18n:translate="moreinfo">En savoir plus</a>
-            <div class="moreinfo" tal:attributes="id string:moreinfo_${repeat/place/number}_${repeat/event/number}">
-                <div tal:content="structure event/longdesc"></div>
-            </div>
-            <!--div tal:content="event/sale_all_day"></div-->
-            <!--div tal:content="event/spectacle_id"></div-->
+      </div>
+    </div>
+    <ul>     
+        <li tal:repeat="event python:events[place['name']]" class="arsene50_events"> 
+        <div tal:attributes='id string:moreinfo${repeat/event/number}'>
+            <h4 class="h4ssstitre" tal:content="event/name"></h4>
+            <strong class="event_question" i18n:translate="When?">Quand ?</strong>
+            <span i18n:translate="a">&agrave;</span>
+            <span class="event_hour" tal:content="event/hour"></span>
+        </div>
+        <div>
+            <strong class="event_question" i18n:translate="How much?">Combien ?</strong>
+            <span class="normalprice" tal:content="structure event/normal_price"></span>
+            <span class="arseneprice" tal:content="structure event/arsene_price"></span>
             <br />
-            </li>
-        </ul>
+            <strong class="event_question" i18:translte="available_seats">Place(s) restante(s) :</strong>
+            <span class="event_available_seats" tal:content="event/available_seats"></span>
+        </div>
+        <a href="#" class="show_hide" tal:attributes="rel string:#moreinfo_${repeat/place/number}_${repeat/event/number}" i18n:translate="moreinfo">En savoir plus</a>
+        <div class="moreinfo" tal:attributes="id string:moreinfo_${repeat/place/number}_${repeat/event/number}">
+            <div tal:content="structure event/longdesc"></div>
+        </div>
+        <!--div tal:content="event/sale_all_day"></div-->
+        <!--div tal:content="event/spectacle_id"></div-->
+        <br />
         </li>
     </ul>
+  </li>
+</ul>
     <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>
 
     <div tal:content="structure context/getText"></div>
