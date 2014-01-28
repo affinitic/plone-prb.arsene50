@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: Thu Nov 21 13:48:08 2013\n"
+"POT-Creation-Date: Tue Jan 28 16:10:45 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -23,15 +23,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: zope/app/locales/extract.py\n"
 
-#: prb.arsene50:/browser/arsene50_view.py:59
+#: prb.arsene50:/browser/arsene50_view.py:62
 msgid "Can't call url from www.arsene50.be"
 msgstr ""
 
-#: prb.arsene50:/browser/arsene50_view.py:64
+#: prb.arsene50:/browser/arsene50_view.py:67
 msgid "Json value error from www.arsene50.be"
 msgstr ""
 
-#: prb.arsene50:/browser/arsene50_view.py:67
+#: prb.arsene50:/browser/arsene50_view.py:70
 msgid "Json bad formatted from www.arsene50.be"
 msgstr ""
 
@@ -45,22 +45,27 @@ msgstr ""
 msgid "today"
 msgstr ""
 
-#: prb.arsene50:/browser/templates/arsene50_view.pt:34
+#: prb.arsene50:/browser/templates/arsene50_view.pt:40
 #. Default: "Quand ?"
 msgid "When?"
 msgstr ""
 
-#: prb.arsene50:/browser/templates/arsene50_view.pt:35
+#: prb.arsene50:/browser/templates/arsene50_view.pt:41
 #. Default: "&agrave;"
 msgid "a"
 msgstr ""
 
-#: prb.arsene50:/browser/templates/arsene50_view.pt:39
+#: prb.arsene50:/browser/templates/arsene50_view.pt:45
 #. Default: "Combien ?"
 msgid "How much?"
 msgstr ""
 
-#: prb.arsene50:/browser/templates/arsene50_view.pt:46
+#: prb.arsene50:/browser/templates/arsene50_view.pt:49
+#. Default: "Place(s) restante(s) :"
+msgid "available_seats"
+msgstr ""
+
+#: prb.arsene50:/browser/templates/arsene50_view.pt:52
 #. Default: "En savoir plus"
 msgid "moreinfo"
 msgstr ""

@@ -1,6 +1,6 @@
 #: prb.arsene50:/browser/arsene50_view.py:59
 msgid "Can't call url from www.arsene50.be"
-msgstr "Impossible d'appeler l'adresse www.arsene50.be"
+msgstr ""
 
 #: prb.arsene50:/browser/arsene50_view.py:64
 msgid "Json value error from www.arsene50.be"
