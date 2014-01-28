@@ -13,29 +13,29 @@ msgstr ""
 #. Default: "A l'affiche"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:15
 msgid "arsene50_affiche_title"
-msgstr ""
+msgstr "Actueel"
 
 #. Default: "aujourd'hui"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:16
 msgid "today"
-msgstr ""
+msgstr "vandaag"
 
 #. Default: "Quand ?"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:34
 msgid "When?"
-msgstr ""
+msgstr "Wanneer ?"
 
 #. Default: "&agrave;"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:35
 msgid "a"
-msgstr ""
+msgstr "om"
 
 #. Default: "Combien ?"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:39
 msgid "How much?"
-msgstr ""
+msgstr "Hoeveel ?"
 
 #. Default: "En savoir plus"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:46
 msgid "moreinfo"
-msgstr ""
+msgstr "Meer informatie"
