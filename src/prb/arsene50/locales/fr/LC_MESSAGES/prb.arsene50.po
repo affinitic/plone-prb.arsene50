@@ -1,12 +1,39 @@
-#: prb.arsene50:/browser/arsene50_view.py:59
+# #############################################################################
+#
+# Copyright (c) 2003-2004 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+# #############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: Wed Jan 29 09:39:32 2014\n"
+"PO-Revision-Date: 2012-03-16 10:55+0100\n"
+"Last-Translator: bsuttor <bsuttor@cirb.irisnet.be>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: prb.arsene50:/browser/arsene50_view.py:62
 msgid "Can't call url from www.arsene50.be"
 msgstr ""
 
-#: prb.arsene50:/browser/arsene50_view.py:64
+#: prb.arsene50:/browser/arsene50_view.py:67
 msgid "Json value error from www.arsene50.be"
 msgstr "Mauvaise valeur dans le json d'arsene50"
 
-#: prb.arsene50:/browser/arsene50_view.py:67
+#: prb.arsene50:/browser/arsene50_view.py:70
 msgid "Json bad formatted from www.arsene50.be"
 msgstr "Json d'arsene50 mal formaté"
 
@@ -21,21 +48,26 @@ msgid "today"
 msgstr "aujourd'hui"
 
 #. Default: "Quand ?"
-#: prb.arsene50:/browser/templates/arsene50_view.pt:34
+#: prb.arsene50:/browser/templates/arsene50_view.pt:40
 msgid "When?"
 msgstr "Quand ?"
 
 #. Default: "&agrave;"
-#: prb.arsene50:/browser/templates/arsene50_view.pt:35
+#: prb.arsene50:/browser/templates/arsene50_view.pt:41
 msgid "a"
 msgstr "à"
 
 #. Default: "Combien ?"
-#: prb.arsene50:/browser/templates/arsene50_view.pt:39
+#: prb.arsene50:/browser/templates/arsene50_view.pt:45
 msgid "How much?"
 msgstr "Combien"
 
+#. Default: "Place(s) restante(s) :"
+#: prb.arsene50:/browser/templates/arsene50_view.pt:49
+msgid "available_seats"
+msgstr "Place(s) restante(s) :"
+
 #. Default: "En savoir plus"
-#: prb.arsene50:/browser/templates/arsene50_view.pt:46
+#: prb.arsene50:/browser/templates/arsene50_view.pt:52
 msgid "moreinfo"
 msgstr "En savoir plus"
