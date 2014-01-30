@@ -12,3 +12,18 @@
 .show_hide {
     display:none;
 }
+div.collapse {
+    position: initial;
+    height: 1;
+}
+.accordion-heading {
+    border: 0;
+    background: #FFFFFF;
+}
+.accordion-body {
+    background: #FFFFFF;
+}
+.accordion-inner {
+    padding: 9px 15px;
+    border-top: 0px solid #e5e5e5;
+}

@@ -7,7 +7,6 @@
     i18n:domain="prb.arsene50">
 <body>
 <div metal:fill-slot="content-core">
-<script type="text/javascript">$(".collapse").collapse()</script>
 
     <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>
 
@@ -23,17 +22,16 @@
     <div class="accordion-heading">
       <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" tal:define="myTarget python:repeat['place'].index" tal:attributes="href string:#${myTarget}"><h3 class="h3soussoustitre" tal:content="place/name"></h3></a>
     </div>
-    <div class="accordion-body collapse" tal:attributes="id python:repeat['place'].index">
+    <div class="accordion-body" tal:attributes="id python:repeat['place'].index">
       <div class="accordion-inner">
         <div class="place_info">
-            <div class="place_address" tal:content="structure place/address"></div>
-            <div class="place_tel" tal:content="place/tel"></div>
-            <div class="place_mailto" ><a href="" tal:attributes="href string:mailto:${place/mail}" tal:content="place/mail"></a></div>
-            <div class="place_website"><a href="" tal:attributes="href place/website" tal:content='python: place["website"].replace("http://", "")' target="_blank"></a></div>
+          <div class="place_address" tal:content="structure place/address"></div>
+          <div class="place_tel" tal:content="place/tel"></div>
+          <div class="place_mailto" ><a href="" tal:attributes="href string:mailto:${place/mail}" tal:content="place/mail"></a></div>
+          <div class="place_website"><a href="" tal:attributes="href place/website" tal:content='python: place["website"].replace("http://", "")' target="_blank"></a></div>
         </div>
       </div>
-    </div>
-    <ul>     
+      <ul>     
         <li tal:repeat="event python:events[place['name']]" class="arsene50_events"> 
         <div tal:attributes='id string:moreinfo${repeat/event/number}'>
             <h4 class="h4ssstitre" tal:content="event/name"></h4>
@@ -57,7 +55,8 @@
         <!--div tal:content="event/spectacle_id"></div-->
         <br />
         </li>
-    </ul>
+      </ul>
+    </div>
   </li>
 </ul>
     <div class="visualClear" id="clear-space-before-navigation"><!-- --></div>

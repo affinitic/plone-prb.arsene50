@@ -109,7 +109,7 @@ class EventArsene(dict):
         nr = place.get('house_nr')
         zipcode = place.get('zip')
         city = place.get('city_{}'.format(self.context_lang))
-        addr = u"{}, {} <br />{} {}".format(street, nr, zipcode, city)
+        addr = u"{} {} {}".format(street, zipcode, city)
         return addr
 
     @property
