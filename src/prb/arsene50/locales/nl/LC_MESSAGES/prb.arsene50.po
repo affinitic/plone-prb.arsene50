@@ -40,7 +40,7 @@ msgstr ""
 #. Default: "A l'affiche"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:15
 msgid "arsene50_affiche_title"
-msgstr "Op de affiche"
+msgstr "Het aanbod"
 
 #. Default: "aujourd'hui"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:16
@@ -50,7 +50,7 @@ msgstr "vandaag"
 #. Default: "Quand ?"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:40
 msgid "When?"
-msgstr "Wanneer?"
+msgstr "Wanneer? "
 
 #. Default: "&agrave;"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:41
@@ -60,12 +60,12 @@ msgstr "om"
 #. Default: "Combien ?"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:45
 msgid "How much?"
-msgstr "Hoeveel?"
+msgstr "Hoeveel? "
 
 #. Default: "Place(s) restante(s) :"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:49
 msgid "available_seats"
-msgstr "Beschikbaren plaatsen:"
+msgstr "Beschikbare plaatsen: "
 
 #. Default: "En savoir plus"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:52
