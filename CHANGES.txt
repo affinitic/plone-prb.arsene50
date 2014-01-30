@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.4 (unreleased)
+0.1.4 (2014-01-30)
 ------------------
 
 - View address of theatre now.
