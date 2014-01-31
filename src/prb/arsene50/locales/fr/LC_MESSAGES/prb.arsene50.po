@@ -60,7 +60,7 @@ msgstr "à"
 #. Default: "Combien ?"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:45
 msgid "How much?"
-msgstr "Combien"
+msgstr "Combien ?"
 
 #. Default: "Place(s) restante(s) :"
 #: prb.arsene50:/browser/templates/arsene50_view.pt:49
