@@ -32,6 +32,7 @@ class Arsene50View(BrowserView):
         #jdict_next = get_json_from_url(url_next)
         #events += [transform_jdict(jdict, lang) for jdict in jdict_next]
         name = 'name_{}'.format(lang)
+        events = [e for e in events if not isinstance(e['Place'], bool)]
         sort_by_place_events = sorted(events,
                 key=lambda k: k['Place'][name])
         places = find_places(sort_by_place_events)

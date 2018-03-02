@@ -5,7 +5,8 @@ Changelog
 0.1.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Handle bad results from Arsene 51 : #164
+  [laulaz]
 
 
 0.1.5 (2014-01-31)
