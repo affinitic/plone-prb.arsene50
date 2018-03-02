@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.6 (unreleased)
+0.1.6 (2018-03-02)
 ------------------
 
 - Handle bad results from Arsene 51 : #164
