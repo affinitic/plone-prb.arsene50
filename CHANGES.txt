@@ -5,6 +5,9 @@ Changelog
 0.1.7 (unreleased)
 ------------------
 
+- Improve styles & JS : #262
+  [laulaz]
+
 - Fix Arsene 50 places fetching : #262
   [laulaz]
 

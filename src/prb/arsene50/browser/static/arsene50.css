@@ -16,6 +16,12 @@ div.collapse {
     position: initial;
     height: 1;
 }
+#content ul li.place,
+#content ul li.arsene50_events {
+    display: list-item;
+    list-style: none;
+}
+
 .accordion-heading {
     border: 0;
     background: #FFFFFF;
