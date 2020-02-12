@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 from Products.Five.browser import BrowserView
 from plone import api
+from plone.memoize import forever
 import json
 import urllib2
+import requests
+from prb.agendabe.config import API_HEADERS
 from prb.arsene50 import _
 from datetime import date
 import logging
 log = logging.getLogger("prb.arsene50")
+
+EVENT_API = "https://api.brussels:443/api/agenda/0.0.1/events/"
 
 
 class Arsene50View(BrowserView):
@@ -19,40 +24,53 @@ class Arsene50View(BrowserView):
                 today.year,
                 )
 
-    def get_events(self):
+    def get_places(self):
         lang = self.context.Language()
-        if lang == "en":
+        if not lang or lang == "en":
             lang = "fr"
         events = []
         url_current = api.portal.get_registry_record(
                 'prb.arsene50.currentoffer')
         jdict_current = get_json_from_url(url_current)
         events += [transform_jdict(jdict, lang) for jdict in jdict_current]
-        #url_next = api.portal.get_registry_record('prb.arsene50.nextoffer')
-        #jdict_next = get_json_from_url(url_next)
-        #events += [transform_jdict(jdict, lang) for jdict in jdict_next]
-        name = 'name_{}'.format(lang)
-        events = [e for e in events if not isinstance(e['Place'], bool)]
-        sort_by_place_events = sorted(events,
-                key=lambda k: k['Place'][name])
-        places = find_places(sort_by_place_events)
-        group_list = group_list_by_place(sort_by_place_events)
-        return {'places': places, 'list': group_list}
+        places = find_places(events, lang)
+        places = sorted(places, key=lambda x: x.name)
+        return places
 
 
-def group_list_by_place(events):
-    names = set(map(lambda x: x.place_name, events))
-    grouplists = [[y for y in events if y.place_name == x] for x in names]
-    return dict(zip(names, grouplists))
+@forever.memoize
+def get_place(agenda_id, lang):
+    url = EVENT_API + str(agenda_id)
+    response = requests.get(url, headers=API_HEADERS, verify=False)
+    if response.status_code != 200:
+        return None
+    json = response.json
+    place = json.get("event").get("place")
+    return place
 
 
-def find_places(events):
-    places = map(lambda x: {'name': x.place_name,
-                            'address': x.place_address,
-                            'tel': x.place_tel,
-                            'mail': x.place_mail,
-                            'website': x.place_website}, events)
-    return [dict(t) for t in set([tuple(place.items()) for place in places])]
+def find_places(events, lang):
+    places = {}
+    for e in events:
+        agenda_id = e.get("agenda_id")
+        place = get_place(agenda_id, "fr")
+        if place is None:
+            continue
+        place_id = place.get("id")
+        if place_id in places:
+            places[place_id].events.append(e)
+        else:
+            infos = place.get("translations").get(lang)
+            address = u"{} - {}".format(infos.get("address_line1"), infos.get("address_line2"))
+            places[place_id] = ArsenePlace(
+                id=place_id,
+                name=infos.get("name"),
+                address=address,
+                tel=infos.get("phone_contact"),
+                mail=infos.get("email"),
+                website=infos.get("website"),
+                events=[e])
+    return places.values()
 
 
 def get_json_from_url(url):
@@ -88,10 +106,6 @@ class EventArsene(dict):
     @property
     def name(self):
         return self.get_content('name')
-
-    @property
-    def longdesc(self):
-        return self.get_content('longdesc')
 
     def get_content(self, key):
         return self.get("{}_{}".format(key, self.context_lang.lower()))
@@ -180,3 +194,22 @@ class EventArsene(dict):
     def remark(self):
         cat = self.categories()
         return cat.get('remark_{}'.format(self.context_lang))
+
+
+class ArsenePlace(object):
+    id = None
+    name = None
+    address = None
+    tel = None
+    mail = None
+    website = None
+    events = []
+
+    def __init__(self, id, name, address, tel, mail, website, events):
+        self.id = id
+        self.name = name
+        self.address = address
+        self.tel = tel
+        self.mail = mail
+        self.website = website
+        self.events = events

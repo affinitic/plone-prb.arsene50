@@ -37,6 +37,8 @@ setup(
         'setuptools',
         'plone.api',
         'Products.LinguaPlone',
+        'requests',
+        'plone.memoize',
     ],
     extras_require={
         'test': [

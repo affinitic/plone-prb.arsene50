@@ -5,7 +5,8 @@ Changelog
 0.1.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix Arsene 50 places fetching : #262
+  [laulaz]
 
 
 0.1.6 (2018-03-02)
