@@ -4,10 +4,7 @@ prb.arsene50
 
 view events from arsene 50
 
-* `Source code @ GitHub <https://github.com/bsuttor/prb.arsene50>`_
-* `Releases @ PyPI <http://pypi.python.org/pypi/prb.arsene50>`_
-* `Documentation @ ReadTheDocs <http://prbarsene50.readthedocs.org>`_
-* `Continuous Integration @ Travis-CI <http://travis-ci.org/bsuttor/prb.arsene50>`_
+* `Source code @ GitHub <https://github.com/affinitic/plone-prb.arsene50>`_
 
 How it works
 ============
