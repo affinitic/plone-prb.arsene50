@@ -26,6 +26,15 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:upgradeStep
+        source="1"
+        destination="2"
+        title="Add Agenda API token record and cleaup useless record"
+        description=""
+        profile="prb.arsene50:default"
+        handler=".upgrades.reload_registry"
+        />
+
     <i18n:registerTranslations directory="locales" />
 
 </configure>

@@ -5,7 +5,6 @@ from plone.memoize import forever
 import json
 import urllib2
 import requests
-from prb.agendabe.config import API_HEADERS
 from prb.arsene50 import _
 from datetime import date
 import logging
@@ -39,9 +38,9 @@ class Arsene50View(BrowserView):
 
 
 @forever.memoize
-def get_place(agenda_id, lang):
+def get_place(agenda_id, lang, api_headers):
     url = EVENT_API + str(agenda_id)
-    response = requests.get(url, headers=API_HEADERS, verify=False)
+    response = requests.get(url, headers=api_headers, verify=False)
     if response.status_code != 200:
         return None
     json = response.json
@@ -51,9 +50,14 @@ def get_place(agenda_id, lang):
 
 def find_places(events, lang):
     places = {}
+    token = api.portal.get_registry_record('prb.arsene50.agenda_api_token')
+    api_headers = {
+        "Accept": "application/json",
+        "Authorization": "Bearer %s" % token
+    }
     for e in events:
         agenda_id = e.get("agenda_id")
-        place = get_place(agenda_id, "fr")
+        place = get_place(agenda_id, "fr", api_headers)
         if place is None:
             continue
         place_id = place.get("id")

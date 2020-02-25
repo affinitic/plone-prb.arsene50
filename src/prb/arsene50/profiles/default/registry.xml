@@ -9,12 +9,14 @@
         <value>http://api.arsene50.be/currentOffer</value>
     </record>
 
-    <record name="prb.arsene50.nextoffer">
+    <record name="prb.arsene50.nextoffer" remove="True" />
+
+    <record name="prb.arsene50.agenda_api_token">
         <field type="plone.registry.field.TextLine">
-            <title>NextOffer</title>
-            <description>Url of webservice from arsene50</description>
+            <title>Agenda API Token</title>
+            <description>Token Agenda API from api.brussels</description>
         </field>
-        <value>http://api.arsene50.be/nextOffer</value>
+        <value></value>
     </record>
 
 </registry>
