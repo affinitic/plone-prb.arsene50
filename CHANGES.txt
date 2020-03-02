@@ -5,7 +5,8 @@ Changelog
 0.1.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Avoid tracebacks when trying to render errors / empty values
+  [laulaz]
 
 
 0.1.7 (2020-02-25)

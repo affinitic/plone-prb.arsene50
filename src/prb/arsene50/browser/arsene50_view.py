@@ -82,16 +82,16 @@ def get_json_from_url(url):
     try:
         data = urllib2.urlopen(url)
     except urllib2.URLError, e:
-        error = _(u'Can\'t call url from www.arsene50.be')
-        return error + e
+        log.error(_(u'Can\'t call url from www.arsene50.be'))
+        return {}
     try:
         jdict = json.load(data)
     except ValueError, e:
-        error = _(u'Json value error from www.arsene50.be')
-        return error
+        log.error(_(u'Json value error from www.arsene50.be'))
+        return {}
     except SyntaxError, e:
-        error = _(u'Json bad formatted from www.arsene50.be')
-        return error
+        log.error(_(u'Json bad formatted from www.arsene50.be'))
+        return {}
     return jdict
 
 
