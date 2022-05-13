@@ -14,7 +14,7 @@ long_description = \
 
 setup(
     name='prb.arsene50',
-    version='0.1.8',
+    version='0.1.9.dev0',
     description="view events from arsene 50",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
