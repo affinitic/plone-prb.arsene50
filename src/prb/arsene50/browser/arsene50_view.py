@@ -109,7 +109,7 @@ class EventArsene(dict):
 
     @property
     def name(self):
-        return self.get_content('name')
+        return self.get('name')
 
     def get_content(self, key):
         return self.get("{}_{}".format(key, self.context_lang.lower()))
@@ -193,11 +193,6 @@ class EventArsene(dict):
     def seat_category(self):
         cat = self.categories()
         return cat.get('seat_category')
-
-    @property
-    def remark(self):
-        cat = self.categories()
-        return cat.get('remark_{}'.format(self.context_lang))
 
 
 class ArsenePlace(object):
